@@ -37,6 +37,7 @@ function addTodo(event)
 
 function deleteCheck(event){
     const item = event.target; //item = where we clicked
+    console.log(item.parentElement.innerText);
     if(item.classList[0]==="delete-btn")
     {
         const todo = item.parentElement;
@@ -52,7 +53,9 @@ function deleteCheck(event){
     {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
+        saveLocalRecord(todo.innerHTML.value);
         removeLocalTodo(todo);
+        
     }
 }
 
@@ -80,6 +83,14 @@ function filterTodo (event)
                     todo.style.display='none';
                 }
                 break;
+            case "finished":
+                if(todo.classList.contains("finished")){
+                    getRecords();
+                    todo.style.display='flex';
+                } else{
+                    todo.style.display='none';
+                }
+                break;
         }
     })
 }
@@ -97,6 +108,21 @@ function saveLocalTodos (todo)
     }
     todos.push(todo);
     localStorage.setItem("todos",JSON.stringify(todos));
+    
+}
+
+function saveLocalRecord (record)
+{
+    let records;
+    if(localStorage.getItem("records")===null)
+    {
+        records=[];
+    }else
+    {
+        records=JSON.parse(localStorage.getItem("records"));
+    }
+    records.push(record);
+    localStorage.setItem("records",JSON.stringify(records));
 }
 
 function getTodos()
@@ -129,6 +155,34 @@ function getTodos()
         todoList.appendChild(todoDiv); 
     })
 }
+
+function getRecords()
+{
+    let records;
+    if(localStorage.getItem("records")===null)
+    {
+        records=[];
+    }else
+    {
+        records=JSON.parse(localStorage.getItem("records"));
+    }
+    records.forEach((record)=>
+    {
+        const todoDiv= document.createElement("div");
+        todoDiv.classList.add("todo");
+        const newTodo = document.createElement("li"); 
+        newTodo.innerText=record;
+        newTodo.classList.add("todo-item");
+        todoDiv.appendChild(newTodo); 
+    
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML="<i class='fas fa-trash'></i>" 
+        deleteButton.classList.add("delete-btn");
+        todoDiv.appendChild(deleteButton);
+        todoList.appendChild(todoDiv); 
+    })
+}
+
 
 function removeLocalTodo(todo)
 {

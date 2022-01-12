@@ -51,7 +51,7 @@ form button:hover{
     display: grid;
     grid-template-columns: repeat(3,300px);
     grid-gap: 10px;
-    grid-template-rows: minmax(60px,auto);
+    grid-auto-rows: 50px;
 }
 
 .todo{
@@ -154,6 +154,7 @@ select{
     grid-template-columns: repeat(1,300px);
     }
 
+
     form{
         display: grid;
         grid-template-columns: repeat(1,300px);
@@ -165,7 +166,10 @@ select{
         grid-template-rows: 300px;
     }
     
-
+    .todo-input, .todo-item
+    {
+        font-size: 1rem;
+    }
     .select {
         margin: 10px 0 10px 0 ;
         position: relative;
