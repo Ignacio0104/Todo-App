@@ -15,37 +15,20 @@
     integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="./css/style.css">
-    <title>To Do List</title>
+    <link rel="stylesheet" href="./css/styleRecords.css">
+    <title>Records</title>
 </head>
-<body onload="getTodos()">
+<body onload="getRecords()">
 
     <header>
-        <h1>Todo List</h1>
+        <h1>Records</h1>
     </header>
-
-    <form>
-        <input type="text" class="todo-input">
-        <button class="todo-button" type="submit">
-            <i class="fas fa-plus-square"></i>
-        </button>
-
-    <div class="select">
-        <select name="todos" class="filter-todo">
-            <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="uncompleted">Uncompleted</option>
-        </select>
-    </div>
-    </form>
 
     <div class="todo-container">
         <ul class="todo-list"></ul>
     </div>
 
-    <div class="records">
-        <a href="./records.html"> Records </a>
-    </div>
+    <a href="./index.html"> Home </a>
 
     <script src="./js/app.js"></script>
 </body>

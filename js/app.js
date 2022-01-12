@@ -17,22 +17,30 @@ function addTodo(event)
     const todoDiv= document.createElement("div"); //Creating de DIV
     todoDiv.classList.add("todo");
     const newTodo = document.createElement("li"); //Creating the item
-    newTodo.innerText=todoInput.value;
-    newTodo.classList.add("todo-item");
-    todoDiv.appendChild(newTodo); //We put the LI inside the DIV
-
-    saveLocalTodos(todoInput.value);
-
-    const completedButton = document.createElement("button");
-    completedButton.innerHTML="<i class='fas fa-check'></i>" //We add the icon to the button
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML="<i class='fas fa-trash'></i>" //We add the icon to the button
-    deleteButton.classList.add("delete-btn");
-    todoDiv.appendChild(deleteButton);
-    todoList.appendChild(todoDiv); //Adding the created DIV to the todo List 
-    todoInput.value=''; //Here we clean de input 
+    if(todoInput.value!="")
+    {
+        console.log(todoInput.value);
+        newTodo.innerText=todoInput.value;
+        newTodo.classList.add("todo-item");
+        todoDiv.appendChild(newTodo); //We put the LI inside the DIV
+    
+        saveLocalTodos(todoInput.value);
+    
+        const completedButton = document.createElement("button");
+        completedButton.innerHTML="<i class='fas fa-check'></i>" //We add the icon to the button
+        completedButton.classList.add("complete-btn");
+        todoDiv.appendChild(completedButton);
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML="<i class='fas fa-trash'></i>" //We add the icon to the button
+        deleteButton.classList.add("delete-btn");
+        todoDiv.appendChild(deleteButton);
+        todoList.appendChild(todoDiv); //Adding the created DIV to the todo List 
+        todoInput.value=''; //Here we clean de input 
+    }else
+    {
+        alert("Favor ingresar texto");
+    }
+    
 }
 
 function deleteCheck(event){
@@ -53,7 +61,7 @@ function deleteCheck(event){
     {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
-        saveLocalRecord(todo.innerHTML.value);
+        saveLocalRecord(item.parentElement.innerText);
         removeLocalTodo(todo);
         
     }
@@ -83,16 +91,13 @@ function filterTodo (event)
                     todo.style.display='none';
                 }
                 break;
-            case "finished":
-                if(todo.classList.contains("finished")){
-                    getRecords();
-                    todo.style.display='flex';
-                } else{
-                    todo.style.display='none';
-                }
-                break;
         }
     })
+
+    if(event.target.value === "finished")
+    {
+        getRecords();
+    }
 }
 
 
@@ -171,15 +176,19 @@ function getRecords()
         const todoDiv= document.createElement("div");
         todoDiv.classList.add("todo");
         const newTodo = document.createElement("li"); 
-        newTodo.innerText=record;
-        newTodo.classList.add("todo-item");
-        todoDiv.appendChild(newTodo); 
-    
-        const deleteButton = document.createElement("button");
-        deleteButton.innerHTML="<i class='fas fa-trash'></i>" 
-        deleteButton.classList.add("delete-btn");
-        todoDiv.appendChild(deleteButton);
-        todoList.appendChild(todoDiv); 
+        if(record!=null)
+        {
+            newTodo.innerText=record;
+            newTodo.classList.add("todo-item");
+            todoDiv.appendChild(newTodo); 
+        
+            const deleteButton = document.createElement("button");
+            deleteButton.innerHTML="<i class='fas fa-trash'></i>" 
+            deleteButton.classList.add("delete-btn");
+            todoDiv.appendChild(deleteButton);
+            todoList.appendChild(todoDiv); 
+        }
+ 
     })
 }
 
