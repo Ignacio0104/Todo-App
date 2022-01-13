@@ -52,7 +52,6 @@ function deleteCheck(event){
         const todo = item.parentElement;
         todo.classList.add("fall");
         removeLocalTodo(todo);
-        removeLocalRecord(todo);
         todo.addEventListener("transitionend", ()=>
         {
             todo.remove();

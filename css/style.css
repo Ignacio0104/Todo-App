@@ -51,7 +51,8 @@ form button:hover{
     display: grid;
     grid-template-columns: repeat(3,300px);
     grid-gap: 10px;
-    grid-auto-rows: 50px;
+    grid-auto-rows: minmax(50px,auto);
+    
 }
 
 .todo{
@@ -137,6 +138,27 @@ select{
     background-color: white;
     color: #ff6f47;
 }
+
+.records{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.records a{
+  background-color: #ff6f47;
+  padding: 10px;
+  color: white;
+  font-weight: 1000;
+  border-radius: 1rem;
+  text-decoration: none;
+}
+
+.records a:hover{
+    color: #ff6f47;
+    background-color: white;
+    transition: 1s ease;
+  }
 
 
 @media screen and (max-width: 930px) {

@@ -15,30 +15,11 @@ header{
     font-size: 2rem;
 }
 
-header,form{
+header{
     min-height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-form input, form button {
-    padding: 0.5rem;
-    font-size: 2rem;
-    border: none;
-    background: white;
-}
-
-form button {
-    color: #fda085;
-    background-color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-form button:hover{
-    color: white;
-    background-color: #fda085;;
 }
 
 .todo-container{
@@ -51,7 +32,7 @@ form button:hover{
     display: grid;
     grid-template-columns: repeat(3,300px);
     grid-gap: 10px;
-    grid-auto-rows: 50px;
+    grid-auto-rows: minmax(50px,auto);
 }
 
 .todo{
@@ -69,7 +50,7 @@ form button:hover{
     list-style-type: none;
 }
 
-.delete-btn, .complete-btn{
+.delete-btn{
     background: #ff6f47;
     color: white;
     border: none;
@@ -79,21 +60,12 @@ form button:hover{
     height: 100%;
 }
 
-.complete-btn{
-    background: rgb(73,204,73);
-}
-
 .todo-item{
     padding-left: 0.5rem;
 }
 
-.fa-trash, .fa-check{
+.fa-trash{
     pointer-events: none;
-}
-
-.completed{
-    text-decoration: line-through;
-    opacity: 0.5;
 }
 
 .fall{
@@ -101,42 +73,27 @@ form button:hover{
     opacity: 0;
 }
 
-select{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
-    border: none;
+.main{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
 }
 
-.select {
-    margin: 1rem;
-    position: relative;
-    overflow: hidden;
+.main a{
+  background-color: #ff6f47;
+  padding: 10px;
+  color: white;
+  font-weight: 1000;
+  border-radius: 1rem;
+  text-decoration: none;
 }
 
-select{
+.main a:hover{
     color: #ff6f47;
-    width: 10rem;
-    cursor: pointer;
-    padding: 1rem;
-}
-
-.select::after{
-    content: "\25BC";
-    position: absolute;
-    background-color: #ff6f47;
-    top: 0;
-    right: 0;
-    padding: 1rem;
-    pointer-events: none;
-    transition: all 0.3s ease ;
-}
-
-.select:hover::after{
     background-color: white;
-    color: #ff6f47;
-}
+    transition: 1s ease;
+  }
+
 
 
 @media screen and (max-width: 930px) {
@@ -154,31 +111,13 @@ select{
     grid-template-columns: repeat(1,300px);
     }
 
-
-    form{
-        display: grid;
-        grid-template-columns: repeat(1,300px);
-        justify-content: center;
-        align-items: center;
-    }
-
-    .todo-input, .todo-button{
+    .todo-input{
         grid-template-rows: 300px;
     }
     
-    .todo-input, .todo-item
+    .todo-item
     {
         font-size: 1rem;
     }
-    .select {
-        margin: 10px 0 10px 0 ;
-        position: relative;
-    }
-
-    .filter-todo{
-        width: 100%;
-    }
-    
-
 
 }
