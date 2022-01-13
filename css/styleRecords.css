@@ -150,7 +150,7 @@ select{
 @media screen and (max-width: 660px) {
 
 
-    .todo-list{
+    .todo-list-records{
     grid-template-columns: repeat(1,300px);
     }
 

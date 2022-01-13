@@ -8,7 +8,7 @@ const filterOption = document.querySelector(".filter-todo");
 //Event listeners
 todoButton.addEventListener("click",addTodo);
 todoList.addEventListener("click",deleteCheck);
-filterOption.addEventListener("mouseup",filterTodo);
+//filterOption.addEventListener("mouseup",filterTodo);
 
 //Functions
 
@@ -70,13 +70,13 @@ function deleteCheck(event){
 }
 
 
-function filterTodo (event)
+function filterTodo (value)
 {
+    console.log(value);
     const todos = todoList.childNodes;
-    console.log(event.target.value);
     todos.forEach((todo)=>
     {
-        switch(event.target.value)
+        switch(value)
         {
             case "all":
                 todo.style.display='flex';
