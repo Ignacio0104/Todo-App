@@ -47,7 +47,7 @@ form button:hover{
     align-items: center;
 }
 
-.todo-list{
+.todo-list-records{
     display: grid;
     grid-template-columns: repeat(3,300px);
     grid-gap: 10px;
@@ -141,7 +141,7 @@ select{
 
 @media screen and (max-width: 930px) {
 
-    .todo-list{
+    .todo-list-records{
     grid-template-columns: repeat(2,300px);
     }
 

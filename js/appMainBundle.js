@@ -2,7 +2,8 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
-const filterOption = document.querySelector(".filter-todo")
+const filterOption = document.querySelector(".filter-todo");
+
 
 //Event listeners
 todoButton.addEventListener("click",addTodo);
@@ -68,6 +69,8 @@ function deleteCheck(event){
     }
 }
 
+
+
 function filterTodo (event)
 {
     const todos = todoList.childNodes;
@@ -95,10 +98,6 @@ function filterTodo (event)
         }
     })
 
-    if(event.target.value === "finished")
-    {
-        getRecords();
-    }
 }
 
 
@@ -162,36 +161,6 @@ function getTodos()
     })
 }
 
-function getRecords()
-{
-    let records;
-    if(localStorage.getItem("records")===null)
-    {
-        records=[];
-    }else
-    {
-        records=JSON.parse(localStorage.getItem("records"));
-    }
-    records.forEach((record)=>
-    {
-        const todoDiv= document.createElement("div");
-        todoDiv.classList.add("todo");
-        const newTodo = document.createElement("li"); 
-        if(record!=null)
-        {
-            newTodo.innerText=record;
-            newTodo.classList.add("todo-item");
-            todoDiv.appendChild(newTodo); 
-        
-            const deleteButton = document.createElement("button");
-            deleteButton.innerHTML="<i class='fas fa-trash'></i>" 
-            deleteButton.classList.add("delete-btn");
-            todoDiv.appendChild(deleteButton);
-            todoList.appendChild(todoDiv); 
-        }
- 
-    })
-}
 
 
 function removeLocalTodo(todo)
@@ -208,20 +177,4 @@ function removeLocalTodo(todo)
     const element=todo.children[0].innerText; //we access the div, then the child (li) and then position 0 of that array (first element)
     todos.splice(todos.indexOf(element),1);
     localStorage.setItem("todos",JSON.stringify(todos));
-}
-
-function removeLocalRecord(todo)
-{
-    let records;
-    if(localStorage.getItem("records")===null)
-    {
-        records=[];
-    }else
-    {
-        records=JSON.parse(localStorage.getItem("records"));
-    }
-
-    const element=todo.children[0].innerText; //we access the div, then the child (li) and then position 0 of that array (first element)
-    records.splice(records.indexOf(element),1);
-    localStorage.setItem("records",JSON.stringify(records));
 }
