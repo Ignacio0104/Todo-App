@@ -20,7 +20,6 @@ function addTodo(event)
     const newTodo = document.createElement("li"); //Creating the item
     if(todoInput.value!="")
     {
-        console.log(todoInput.value);
         newTodo.innerText=todoInput.value;
         newTodo.classList.add("todo-item");
         todoDiv.appendChild(newTodo); //We put the LI inside the DIV
@@ -41,12 +40,41 @@ function addTodo(event)
     {
         alert("Favor ingresar texto");
     }
+
+    checkFooter();
     
+}
+
+function checkFooter(){
+
+    if(screen.width>660)
+    {
+        if(todoList.childNodes.length>=9)
+        {
+            document.getElementById("footerMain").classList.remove(".main-footer");
+            document.getElementById("footerMain").classList.add("footer-relative");
+        } else{
+            document.getElementById("footerMain").classList.remove("footer-relative");
+            document.getElementById("footerMain").classList.add(".main-footer");
+            
+        } 
+    } else
+    {
+        if(todoList.childNodes.length>=6)
+        {
+            document.getElementById("footerMain").classList.remove(".main-footer");
+            document.getElementById("footerMain").classList.add("footer-relative");
+        } else{
+            document.getElementById("footerMain").classList.remove("footer-relative");
+            document.getElementById("footerMain").classList.add(".main-footer");
+            
+        } 
+    }
+ 
 }
 
 function deleteCheck(event){
     const item = event.target; //item = where we clicked
-    console.log(item.parentElement.innerText);
     if(item.classList[0]==="delete-btn")
     {
         const todo = item.parentElement;
@@ -66,12 +94,13 @@ function deleteCheck(event){
         removeLocalTodo(todo);
         
     }
+
+    checkFooter();
 }
 
 
 function filterTodo (value)
 {
-    console.log(value);
     const todos = todoList.childNodes;
     todos.forEach((todo)=>
     {
@@ -97,6 +126,7 @@ function filterTodo (value)
         }
     })
 
+    checkFooter();
 }
 
 
@@ -158,6 +188,7 @@ function getTodos()
         todoDiv.appendChild(deleteButton);
         todoList.appendChild(todoDiv); 
     })
+    checkFooter();
 }
 
 
