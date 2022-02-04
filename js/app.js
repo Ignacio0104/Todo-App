@@ -49,7 +49,7 @@ function checkFooter(){
 
     if(screen.width>660)
     {
-        if(todoList.childNodes.length>=9)
+        if(todoList.childNodes.length>=6)
         {
             document.getElementById("footerMain").classList.remove(".main-footer");
             document.getElementById("footerMain").classList.add("footer-relative");
