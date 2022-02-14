@@ -60,7 +60,7 @@ function checkFooter(){
         } 
     } else
     {
-        if(todoList.childNodes.length>=6)
+        if(todoList.childNodes.length>=3)
         {
             document.getElementById("footerMain").classList.remove(".main-footer");
             document.getElementById("footerMain").classList.add("footer-relative");
